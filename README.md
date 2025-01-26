@@ -12,4 +12,4 @@ https://huggingface.co/datasets/fancyzhx/yelp_polarity/viewer/plain_text/train?q
 ![shot_word](Shot1.png)
 ![shot_word2](Shot2.png)
 
-![short](cast.webm)
+![short](https://github.com/aman010/nlp_assignment_2/blob/main/cast.webm)
