@@ -7,7 +7,7 @@ https://huggingface.co/datasets/fancyzhx/yelp_polarity/viewer/plain_text/train?q
 
 * since the we were not able load the full corpus during the runtime of app so we only added few rows from the book
 * this work has two model one is bi-directional lstm for next word predict and another is attention model for document classification
-
+* 
 
 ![shot_word](Shot1.png)
 ![shot_word2](Shot2.png)
