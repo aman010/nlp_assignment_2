@@ -22,7 +22,7 @@ def load_next_word_model():
 
 # Create the model
     model = BiLSTM_model(57657, 50, 64, 57657, pad_idx=0, dropout_prob=0.4).to("cpu")
-    model.load_state_dict(torch.load('/home/qb/NLP_Assignment/A2/Models_copra/trained_model.ptn', map_location=torch.device('cpu')).state_dict())
+    model.load_state_dict(torch.load('Models_copra/trained_model.ptn', map_location=torch.device('cpu')).state_dict())
     return model
 
 @st.cache(allow_output_mutation=True)
@@ -140,7 +140,7 @@ with tab1:
     # Create a predict button
     if st.button('Predict Next Word'):
         model = load_next_word_model()
-        vocab=np.load('/home/qb/NLP_Assignment/A2/Models_copra/bi-lstm_vocab.npy', allow_pickle=True).tolist()
+        vocab=np.load('Models_copra/bi-lstm_vocab.npy', allow_pickle=True).tolist()
         print(type(vocab))
         model.eval()  # Set the model to evaluation mode
         with torch.no_grad():
