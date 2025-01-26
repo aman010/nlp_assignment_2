@@ -9,10 +9,10 @@ https://nlpassignment2-nkf6fskfmspwe2vguuvhwy.streamlit.app/
 
 * since the we were not able load the full corpus during the runtime of app so we only added few rows from the book
 * this work has two model one is bi-directional lstm for next word predict and another is attention model for document classification
+![short_caste](https://github.com/aman010/nlp_assignment_2/blob/main/cast.webm)
 
   
 
 ![shot_word](Shot1.png)
 ![shot_word2](Shot2.png)
 
-![short_caste](https://github.com/aman010/nlp_assignment_2/blob/main/cast.webm)
