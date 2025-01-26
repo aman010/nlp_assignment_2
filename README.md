@@ -12,7 +12,7 @@ https://nlpassignment2-nkf6fskfmspwe2vguuvhwy.streamlit.app/
 ![short_caste](https://github.com/aman010/nlp_assignment_2/blob/main/cast.webm)
 
   
-
+[![Video Title](Shot1.png)](https://github.com/aman010/nlp_assignment_2/blob/main/cast.webm)
 ![shot_word](Shot1.png)
 ![shot_word2](shot2.png)
 
