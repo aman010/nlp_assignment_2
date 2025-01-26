@@ -14,5 +14,5 @@ https://nlpassignment2-nkf6fskfmspwe2vguuvhwy.streamlit.app/
   
 
 ![shot_word](Shot1.png)
-![shot_word2](Shot2.png)
+![shot_word2](shot2.png)
 
