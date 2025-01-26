@@ -13,10 +13,10 @@ https://nlpassignment2-nkf6fskfmspwe2vguuvhwy.streamlit.app/
 * the number on the web page allow the user to select the document [w1,w2,w3,w4] is 0 then [w2,w3,w4,w5] is 1 and so on 
 * this work has two model one is bi-directional lstm for next word predict and another is attention model for document classification
 
+*The below video is added in webm format
 ![short_caste](https://github.com/aman010/nlp_assignment_2/blob/main/cast.webm)
 
   
-[![Video Title](Shot1.png)](https://github.com/aman010/nlp_assignment_2/blob/main/cast.webm)
 ![shot_word](Shot1.png)
 ![shot_word2](shot2.png)
 
