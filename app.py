@@ -22,7 +22,7 @@ def load_next_word_model():
 
 # Create the model
     model = BiLSTM_model(57657, 50, 64, 57657, pad_idx=0, dropout_prob=0.4).to("cpu")
-    model.load_state_dict(torch.load('Models_copra/trained_model.ptn', map_location=torch.device('cpu')).state_dict())
+    model.load_state_dict(torch.load('/home/qb/NLP_Assignment/A2/Models_copra/trained_model.ptn', map_location=torch.device('cpu')).state_dict())
     return model
 
 @st.cache(allow_output_mutation=True)
@@ -135,28 +135,53 @@ with tab1:
     
     
     # Create a text input field
-    # input_text = st.text_area('Enter your text')
+    input_text = st.text_area('Enter your text')
     
     # Create a predict button
-    if st.button('Predict Next Word'):
-        model = load_next_word_model()
-        vocab=np.load('Models_copra/bi-lstm_vocab.npy', allow_pickle=True).tolist()
-        print(type(vocab))
-        model.eval()  # Set the model to evaluation mode
-        with torch.no_grad():
-            output = model(input_tensor[selected_book,:])
-        probabilities = torch.nn.functional.softmax(output, dim=-1)
-        predicted_indices = torch.argmax(probabilities, dim=-1)
-        predicted_index = output[0, -1].argmax(dim=-1).item()  # Get the index of the highest probability word
-        print(predicted_index)
-        # Reverse the vocab to get the word from the index
-        reverse_vocab = {v: k for k, v in vocab.items()}
-        predicted_words = [reverse_vocab[idx.item()] for idx in predicted_indices]
-        actual_word = [reverse_vocab[output_tensor[selected_book].tolist()]]
-
-        st.write("predicted_word:", predicted_words)
-        st.write("actual_sentence:", actual_word )
-       
+    if st.button("Predict New Word"):
+        if not input_text:
+            model = load_next_word_model()
+            vocab=np.load('/home/qb/NLP_Assignment/A2/Models_copra/bi-lstm_vocab.npy', allow_pickle=True).tolist()
+            print(type(vocab))
+            model.eval()  # Set the model to evaluation mode
+            with torch.no_grad():
+                output = model(input_tensor[selected_book,:])
+            probabilities = torch.nn.functional.softmax(output, dim=-1)
+            predicted_indices = torch.argmax(probabilities, dim=-1)
+            predicted_index = output[0, -1].argmax(dim=-1).item()  # Get the index of the highest probability word
+            print(predicted_index)
+            # Reverse the vocab to get the word from the index
+            reverse_vocab = {v: k for k, v in vocab.items()}
+            predicted_words = [reverse_vocab[idx.item()] for idx in predicted_indices]
+            actual_word = [reverse_vocab[output_tensor[selected_book].tolist()]]
+    
+            st.write("predicted_word:", predicted_words)
+            st.write("actual_sentence:", actual_word )
+            
+        if input_text:
+                s=str(input_text).split()
+                vocab=np.load('/home/qb/NLP_Assignment/A2/Models_copra/bi-lstm_vocab.npy', allow_pickle=True).tolist()
+                model = load_next_word_model()
+                model.eval()  # Set the model to evaluation mode
+                
+                # text_ = [vocab[x] for x in s]
+                text_ = []
+                for t in s:
+                    try:
+                        text_.append(vocab[t])
+                    except:
+                        text_.append(0)
+                        continue
+                text_ = torch.tensor(text_).long()
+                with torch.no_grad():
+                    output = model(text_)
+                probabilities = torch.nn.functional.softmax(output, dim=-1) 
+                predicted_indices = torch.argmax(probabilities, dim=-1)
+                reverse_vocab = {v: k for k, v in vocab.items()}
+                predicted_words = [reverse_vocab[idx.item()] for idx in predicted_indices]
+                st.write("predicted_word:", predicted_words)
+                st.write("certainity:", torch.max(probabilities, dim=-1)[0].tolist())
+                           
 
 with tab2:
     # Document classification
